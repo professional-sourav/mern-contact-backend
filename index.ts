@@ -1,7 +1,6 @@
 import express, {Express} from 'express'
 import dotenv from 'dotenv'
 import { router } from './routes/contact';
-import { errorHandler } from './middleware/errorHandler';
 import { connectDB } from './config/db';
 
 dotenv.config();

@@ -9,3 +9,5 @@ const contact_1 = require("../controller/contact");
 exports.router = express_1.default.Router();
 exports.router.get('/api/contacts', contact_1.getContacts);
 exports.router.post('/api/contacts', contact_1.addContact);
+exports.router.get('/api/contacts/:id', contact_1.getContact);
+exports.router.put('/api/contacts/:id', contact_1.updateContact);
