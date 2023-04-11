@@ -5,6 +5,8 @@ import { Error } from "mongoose";
 
 export const getContacts = asyncHandler( async (req: Request, res: Response) => {
 
+    console.log(req.user);    
+
     const contacts = await Contact.find()
 
     res.json(contacts);

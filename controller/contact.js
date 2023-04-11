@@ -17,6 +17,7 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const contact_1 = __importDefault(require("../model/contact"));
 const mongoose_1 = require("mongoose");
 exports.getContacts = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.user);
     const contacts = yield contact_1.default.find();
     res.json(contacts);
 }));
