@@ -7,11 +7,13 @@ const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const contact_1 = require("./routes/contact");
 const db_1 = require("./config/db");
+const auth_1 = require("./routes/auth");
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 (0, db_1.connectDB)();
 app.use(express_1.default.json());
-app.use(contact_1.router);
+app.use('/api/contacts', contact_1.contactRouter);
+app.use('/api/auth', auth_1.authRouter);
 // app.use(router.route)
 // app.use(errorHandler)
 app.listen(process.env.PORT, () => {

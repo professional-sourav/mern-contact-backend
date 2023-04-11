@@ -1,7 +1,8 @@
 import express, {Express} from 'express'
 import dotenv from 'dotenv'
-import { router } from './routes/contact';
+import { contactRouter } from './routes/contact';
 import { connectDB } from './config/db';
+import { authRouter } from './routes/auth';
 
 dotenv.config();
 
@@ -10,7 +11,8 @@ const app: Express = express()
 connectDB()
 
 app.use(express.json())
-app.use(router)
+app.use('/api/contacts', contactRouter)
+app.use('/api/auth', authRouter)
 // app.use(router.route)
 // app.use(errorHandler)
 

@@ -1,10 +1,10 @@
 import express from 'express'
 import { addContact, getContact, getContacts, updateContact } from '../controller/contact'
 
-export const router = express.Router()
+export const contactRouter = express.Router()
 
-router.get('/api/contacts', getContacts)
-router.post('/api/contacts', addContact)
+contactRouter.get('/', getContacts)
+contactRouter.post('/', addContact)
 
-router.get('/api/contacts/:id', getContact)
-router.put('/api/contacts/:id', updateContact)
+contactRouter.get('/:id', getContact)
+contactRouter.put('/:id', updateContact)
