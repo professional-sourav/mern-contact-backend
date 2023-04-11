@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import { contactRouter } from './routes/contact';
 import { connectDB } from './config/db';
 import { authRouter } from './routes/auth';
+import { userRouter } from './routes/user';
 
 dotenv.config();
 
@@ -11,8 +12,9 @@ const app: Express = express()
 connectDB()
 
 app.use(express.json())
-app.use('/api/contacts', contactRouter)
 app.use('/api/auth', authRouter)
+app.use('/api/contacts', contactRouter)
+app.use('/api/user', userRouter)
 // app.use(router.route)
 // app.use(errorHandler)
 
