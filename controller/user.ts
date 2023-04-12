@@ -48,7 +48,7 @@ export const login = asyncHandler(async (req: Request, res: Response) => {
                 }
             },            
             `${process.env.AUTH_SECRET}`,
-            {expiresIn: "1m"}
+            {expiresIn: "15m"}
         )
 
         res.send({

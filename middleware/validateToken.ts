@@ -10,7 +10,7 @@ export const validateToken = asyncHandler(async (req: Request, res: Response, ne
 
         const token = authToken?.split(' ')[1]
 
-        jwt.verify(token, `${process.env.AUTH_SECRET}`, (error, decode) => {
+        jwt.verify(token, `${process.env.AUTH_SECRET}`, (error, decode: any) => {
             if (error) {
                 res.status(401).send("Unauthorized!!")
             }

@@ -47,7 +47,7 @@ exports.login = (0, express_async_handler_1.default)((req, res) => __awaiter(voi
                 id: user.id,
                 email: user.email
             }
-        }, `${process.env.AUTH_SECRET}`, { expiresIn: "1m" });
+        }, `${process.env.AUTH_SECRET}`, { expiresIn: "15m" });
         res.send({
             accessToken: accessToken
         });

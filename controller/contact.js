@@ -17,12 +17,20 @@ const express_async_handler_1 = __importDefault(require("express-async-handler")
 const contact_1 = __importDefault(require("../model/contact"));
 const mongoose_1 = require("mongoose");
 exports.getContacts = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    console.log(req.user);
-    const contacts = yield contact_1.default.find();
+    // console.log(req.user);    
+    const contacts = yield contact_1.default.find({ user_id: req.user.id });
     res.json(contacts);
 }));
 exports.addContact = (0, express_async_handler_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const newContact = new contact_1.default(req.body);
+    const { name, email, phone } = req.body;
+    // console.log(req.user);    
+    const newContact = new contact_1.default({
+        user_id: req.user.id,
+        name,
+        email,
+        phone
+    });
+    console.log(newContact);
     const contact = yield newContact.save();
     res.json(contact);
 }));

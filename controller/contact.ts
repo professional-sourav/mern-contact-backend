@@ -5,16 +5,28 @@ import { Error } from "mongoose";
 
 export const getContacts = asyncHandler( async (req: Request, res: Response) => {
 
-    console.log(req.user);    
+    // console.log(req.user);    
 
-    const contacts = await Contact.find()
+    const contacts = await Contact.find({ user_id: req.user.id })
 
     res.json(contacts);
 })
 
 export const addContact = asyncHandler( async (req: Request, res: Response) => {
 
-    const newContact = new Contact(req.body)
+    const {name, email, phone} = req.body
+
+    // console.log(req.user);    
+
+    const newContact = new Contact({
+        user_id: req.user.id,
+        name,
+        email,
+        phone
+    })
+
+    console.log(newContact);
+    
     const contact = await newContact.save()
 
     res.json(contact);
